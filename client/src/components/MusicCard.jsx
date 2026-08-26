@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:5000";
+const API_URL = "https://music-website-z7h7.onrender.com";
 import playImage from "../assets/images/playk.png";
 import { useState, useEffect, useRef } from "react";
 import bg1 from "../assets/images/bg1.jpg";
