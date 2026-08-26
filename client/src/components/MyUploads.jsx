@@ -14,7 +14,7 @@ function MyUploads() {
   const fetchMyUploads = async () => {
     try {
       const res = await axios.get(
-        "http://localhost:5000/api/songs/my",
+        "https://music-website-z7h7.onrender.com/api/songs/my",
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -45,7 +45,7 @@ function MyUploads() {
 
     try {
       const res = await axios.delete(
-        `http://localhost:5000/api/songs/${id}`,
+        `https://music-website-z7h7.onrender.com/api/songs/${id}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,

@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 
-const API_URL = "http://localhost:5000";
-
+"https://music-website-z7h7.onrender.com/api/auth/login",
 function MyPlaylists() {
   const [playlists, setPlaylists] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -69,7 +68,7 @@ const createPlaylist = async () => {
     const token = localStorage.getItem("token");
 
     const res = await fetch(
-      "http://localhost:5000/api/playlists",
+      "https://music-website-z7h7.onrender.com/api/playlists",
       {
         method: "POST",
         headers: {
