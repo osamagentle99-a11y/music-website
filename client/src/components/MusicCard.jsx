@@ -1,10 +1,27 @@
-const API_URL = "https://music-website-z7h7.onrender.com";
 import playImage from "../assets/images/playk.png";
 import { useState, useEffect, useRef } from "react";
 import bg1 from "../assets/images/bg1.jpg";
 import bg2 from "../assets/images/bg2.jpg";
 import bg3 from "../assets/images/bg3.jpg";
 import { getSongs, deleteSong } from "../services/songService";
+
+const API_URL = "https://music-website-z7h7.onrender.com";
+const getMediaUrl = (url, type) => {
+  if (!url) return "";
+
+  if (url.startsWith("http://localhost:5000")) {
+    return url.replace(
+      "http://localhost:5000",
+      API_URL
+    );
+  }
+
+  if (!url.startsWith("http")) {
+    return `${API_URL}/uploads/${type}/${url.split("/").pop()}`;
+  }
+
+  return url;
+};
 
 function MusicCard() {
   const images = [bg1, bg2, bg3, bg2];
@@ -50,7 +67,7 @@ const fetchPlaylists = async () => {
     if (!token) return;
 
     const res = await fetch(
-      "http://localhost:5000/api/playlists",
+  `${API_URL}/api/playlists`,
       {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -71,8 +88,8 @@ const addToPlaylist = async (playlistId, songId) => {
   try {
     const token = localStorage.getItem("token");
 
-    const res = await fetch(
-      `http://localhost:5000/api/playlists/${playlistId}/songs`,
+   const res = await fetch(
+  `${API_URL}/api/playlists/${playlistId}/songs`,
       {
         method: "POST",
         headers: {
@@ -206,7 +223,7 @@ const filteredSongs = songs.filter((song) =>
     <div className="shadow p-4 text-center">
 
       <img
-        src={currentSong.image}
+        src={getMediaUrl(currentSong.image, "images")}
         alt={currentSong.title}
         style={{
           width: "250px",
@@ -234,12 +251,8 @@ const filteredSongs = songs.filter((song) =>
       </button>
 
       <audio
-        ref={playerRef}
-       src={
-  currentSong.audio.startsWith("http")
-    ? currentSong.audio
-    : `${API_URL}/uploads/songs/${currentSong.audio.split("/").pop()}`
-}
+  ref={playerRef}
+  src={getMediaUrl(currentSong.audio, "songs")}
         onPlay={() => setIsPlaying(true)}
         onPause={() => setIsPlaying(false)}
         onTimeUpdate={() =>
@@ -284,12 +297,8 @@ const filteredSongs = songs.filter((song) =>
               className={`card shadow h-100 ${
               playingId === song._id ? "border border-warning border-3" : "" }`}
         >
-          <img
- src={
-  song.image.startsWith("http")
-    ? song.image
-    : `${API_URL}/uploads/images/${song.image.split("/").pop()}`
-}
+  <img
+  src={getMediaUrl(song.image, "images")}
   alt={song.title}
   style={{
   width: "100%",
