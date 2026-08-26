@@ -1,6 +1,24 @@
 import { useEffect, useRef, useState } from "react";
 
-"https://music-website-z7h7.onrender.com/api/auth/login",
+const API_URL = "https://music-website-z7h7.onrender.com";
+const getMediaUrl = (url, type) => {
+  if (!url) return "";
+
+  // Old localhost URL ko Render URL mein convert
+  if (url.startsWith("http://localhost:5000")) {
+    return url.replace(
+      "http://localhost:5000",
+      API_URL
+    );
+  }
+
+  // Agar sirf filename/path hai
+  if (!url.startsWith("http")) {
+    return `${API_URL}/uploads/${type}/${url.split("/").pop()}`;
+  }
+
+  return url;
+};
 function MyPlaylists() {
   const [playlists, setPlaylists] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -299,23 +317,17 @@ const createPlaylist = async () => {
 
           {currentSong ? (
             <>
-              <img
-                src={
-                  currentSong.image?.startsWith("http")
-                    ? currentSong.image
-                    : `${API_URL}/uploads/images/${currentSong.image
-                        ?.split("/")
-                        .pop()}`
-                }
-                alt={currentSong.title}
-                style={{
-                  width: "250px",
-                  height: "200px",
-                  objectFit: "cover",
-                  margin: "auto",
-                  borderRadius: "15px",
-                }}
-              />
+             <img
+  src={getMediaUrl(currentSong.image, "images")}
+  alt={currentSong.title}
+  style={{
+    width: "250px",
+    height: "200px",
+    objectFit: "cover",
+    margin: "auto",
+    borderRadius: "15px",
+  }}
+/>
 
               <h2 className="mt-3">
                 {currentSong.title}
@@ -382,13 +394,7 @@ const createPlaylist = async () => {
 
               <audio
                 ref={playerRef}
-                src={
-                  currentSong.audio?.startsWith("http")
-                    ? currentSong.audio
-                    : `${API_URL}/uploads/songs/${currentSong.audio
-                        ?.split("/")
-                        .pop()}`
-                }
+                src={getMediaUrl(currentSong.audio, "songs")}
                 onPlay={() => setIsPlaying(true)}
                 onPause={() => setIsPlaying(false)}
                 onTimeUpdate={() => {

@@ -44,14 +44,14 @@ function MyUploads() {
     if (!confirmDelete) return;
 
     try {
-      const res = await axios.delete(
-        `https://music-website-z7h7.onrender.com/api/songs/${id}`,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+     const res = await axios.delete(
+  `https://music-website-z7h7.onrender.com/api/songs/${id}`,
+  {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  }
+);
 
       if (res.data.success) {
         alert("Song deleted successfully 🗑️");
