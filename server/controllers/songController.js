@@ -1,4 +1,6 @@
 import Song from "../models/Song.js";
+import cloudinary from "../config/cloudinary.js";
+import { Readable } from "stream";
 
 // Get all songs
 export const getSongs = async (req, res) => {
@@ -55,20 +57,64 @@ export const addSong = async (req, res) => {
     const imageFile = req.files.image[0];
     const audioFile = req.files.audio[0];
 
-    const imageUrl =
-      `http://localhost:5000/uploads/images/${imageFile.filename}`;
+    // =========================
+    // Cloudinary Upload Function
+    // =========================
+    const uploadToCloudinary = (file, resourceType, folder) => {
+      return new Promise((resolve, reject) => {
+        const stream = cloudinary.uploader.upload_stream(
+          {
+            folder: folder,
+            resource_type: resourceType,
+          },
+          (error, result) => {
+            if (error) {
+              reject(error);
+            } else {
+              resolve(result);
+            }
+          }
+        );
 
-    const audioUrl =
-      `http://localhost:5000/uploads/songs/${audioFile.filename}`;
+        Readable.from(file.buffer).pipe(stream);
+      });
+    };
 
+    // =========================
+    // Upload Image
+    // =========================
+    const imageResult = await uploadToCloudinary(
+      imageFile,
+      "image",
+      "music-website/images"
+    );
+
+    console.log("CLOUDINARY IMAGE:", imageResult.secure_url);
+
+    // =========================
+    // Upload Audio
+    // =========================
+    const audioResult = await uploadToCloudinary(
+      audioFile,
+      "video",
+      "music-website/songs"
+    );
+
+    console.log("CLOUDINARY AUDIO:", audioResult.secure_url);
+
+    // =========================
+    // Save Song in MongoDB
+    // =========================
     const song = await Song.create({
       title: req.body.title,
       artist: req.body.artist,
       album: req.body.album || "",
       genre: req.body.genre || "",
       duration: req.body.duration || "",
-      image: imageUrl,
-      audio: audioUrl,
+
+      image: imageResult.secure_url,
+      audio: audioResult.secure_url,
+
       uploadedBy: req.user.userId,
     });
 
