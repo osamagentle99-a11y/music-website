@@ -1,8 +1,17 @@
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import hero1 from "../assets/images/marcela-laskoski-YrtFlrLo2DQ-unsplash.jpg";
 import hero2 from "../assets/images/mohammad-metri-1oKxSKSOowE-unsplash.jpg";
 import logo from "../assets/images/logo.png";
 
 function Hero() {
+
+  const navigate = useNavigate();
+
+  const [user] = useState(
+    JSON.parse(localStorage.getItem("user"))
+  );
+
   return (
     <div className="container py-5 hero-section">
       <div
@@ -13,25 +22,42 @@ function Hero() {
       >
         <div className="carousel-inner">
 
-          {/* Slide 1 */}
+          {/* ================= SLIDE 1 ================= */}
           <div className="carousel-item active">
             <div className="hero">
+
               <img src={hero1} className="hero-img" alt="" />
 
               <div className="overlay"></div>
 
               <div className="hero-content">
 
+                {/* Top Buttons */}
                 <div className="top-buttons">
-                  <button className="btn btn-light rounded-pill px-4">
-                    Sign In
-                  </button>
+  {user ? (
+    <div className="user-welcome">
+      Hi, {user.name} 👋
+    </div>
+  ) : (
+    <>
+      <button
+        className="btn btn-light rounded-pill px-4"
+        onClick={() => navigate("/login")}
+      >
+        Sign In
+      </button>
 
-                  <button className="btn btn-dark rounded-pill px-4">
-                    Create Account
-                  </button>
-                </div>
+      <button
+        className="btn btn-dark rounded-pill px-4"
+        onClick={() => navigate("/register")}
+      >
+        Create Account
+      </button>
+    </>
+  )}
+</div>
 
+                {/* Heading + Paragraph */}
                 <div className="left-content">
                   <h1>
                     IT ALL STARTS WITH
@@ -43,40 +69,35 @@ function Hero() {
                     SoundCloud is where you define what's next in music.
                     Just hit upload.
                   </p>
-
-                  <div className="mt-4">
-                    <button className="btn btn-light rounded-pill px-4 me-3">
-                      Upload
-                    </button>
-
-                    <button className="btn btn-outline-light rounded-pill px-4">
-                      Explore Artist Pro
-                    </button>
-                  </div>
                 </div>
 
-                {/* <div className="artist">
-                  <img
-                    src={logo}
-                    className="img-fluid"
-                    style={{ height: "50px" }}
-                    alt=""
-                  />
-                </div> */}
+                {/* Bottom Buttons */}
+                <div className="hero-actions">
+                  <button className="btn btn-light rounded-pill">
+                    Upload
+                  </button>
+
+                  <button className="btn btn-outline-light rounded-pill">
+                    Explore Artist Pro
+                  </button>
+                </div>
 
               </div>
             </div>
           </div>
 
-          {/* Slide 2 */}
+
+          {/* ================= SLIDE 2 ================= */}
           <div className="carousel-item">
             <div className="hero">
+
               <img src={hero2} className="hero-img" alt="" />
 
               <div className="overlay"></div>
 
               <div className="hero-content">
 
+                {/* Top Buttons */}
                 <div className="top-buttons">
                   <button className="btn btn-light rounded-pill px-4">
                     Sign In
@@ -87,6 +108,7 @@ function Hero() {
                   </button>
                 </div>
 
+                {/* Heading + Paragraph */}
                 <div className="left-content">
                   <h1>
                     DISCOVER NEW
@@ -94,19 +116,23 @@ function Hero() {
                     MUSIC
                   </h1>
 
-                  <p>Upload and share your music with the world.</p>
-
-                  <div className="mt-4">
-                    <button className="btn btn-light rounded-pill px-4 me-3">
-                      Upload
-                    </button>
-
-                    <button className="btn btn-outline-light rounded-pill px-4">
-                      Explore
-                    </button>
-                  </div>
+                  <p>
+                    Upload and share your music with the world.
+                  </p>
                 </div>
 
+                {/* Bottom Buttons */}
+                <div className="hero-actions">
+                  <button className="btn btn-light rounded-pill">
+                    Upload
+                  </button>
+
+                  <button className="btn btn-outline-light rounded-pill">
+                    Explore
+                  </button>
+                </div>
+
+                {/* Logo */}
                 <div className="artist">
                   <img
                     src={logo}
@@ -122,7 +148,10 @@ function Hero() {
 
         </div>
 
+
+        {/* Carousel Indicators */}
         <div className="carousel-indicators">
+
           <button
             type="button"
             data-bs-target="#heroSlider"
@@ -135,7 +164,9 @@ function Hero() {
             data-bs-target="#heroSlider"
             data-bs-slide-to="1"
           ></button>
+
         </div>
+
       </div>
     </div>
   );

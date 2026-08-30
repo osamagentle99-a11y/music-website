@@ -54,13 +54,14 @@ body {
     gap:10px;
 }
 
-.left-content{
-    position:absolute;
-    left:60px;
-    top:50%;
-    transform:translateY(-50%);
-    max-width:520px;
-    z-index:2;
+.left-content {
+    position: absolute;
+    left: 60px;
+    top: 50%;
+    transform: translateY(-50%);
+    max-width: 520px;
+    z-index: 2;
+    padding-bottom: 80px;
 }
 
 .hero{
@@ -89,6 +90,16 @@ body {
     color:#fff;
     z-index:2;
 }
+.hero-actions {
+    position: absolute;
+    bottom: 30px;
+    left: 60px;
+    z-index: 3;
+
+    display: flex;
+    gap: 15px;
+}
+
 
 .btn-light{
     border-radius:50px;
@@ -305,6 +316,54 @@ section{
 }
 
 @media (max-width: 576px) {
+     .left-content {
+        left: 15px;
+        right: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+
+        max-width: none;
+        padding-bottom: 50px;
+
+        text-align: center;
+    }
+     .left-content h1 {
+        font-size: 32px;
+        line-height: 1.15;
+    }
+     .left-content p {
+        font-size: 16px;
+        line-height: 1.5;
+        margin: 15px auto 0;
+        max-width: 350px;
+    }
+    .hero-actions {
+        position: absolute;
+        bottom: 20px;
+        left: 15px;
+        right: 15px;
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        gap: 10px;
+        z-index: 3;
+    }
+
+     .hero-actions button {
+        font-size: 13px;
+        padding: 9px 14px;
+        white-space: nowrap;
+    }
+    .user-welcome {
+    background: rgba(255, 255, 255, 0.95);
+    color: #111;
+    padding: 12px 25px;
+    border-radius: 50px;
+    font-size: 18px;
+    font-weight: 600;
+}
     .song-card {
         flex-wrap: wrap;
     }
