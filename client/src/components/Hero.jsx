@@ -73,10 +73,12 @@ function Hero() {
 
                 {/* Bottom Buttons */}
                 <div className="hero-actions">
-                  <button className="btn btn-light rounded-pill">
-                    Upload
-                  </button>
-
+                  <button
+  className="btn btn-light rounded-pill"
+  onClick={() => navigate("/upload")}
+>
+  Upload
+</button>
                   <button className="btn btn-outline-light rounded-pill">
                     Explore Artist Pro
                   </button>
