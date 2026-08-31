@@ -90,7 +90,7 @@ function Hero() {
 
 
           {/* ================= SLIDE 2 ================= */}
-          <div className="carousel-item">
+          {/* <div className="carousel-item">
             <div className="hero">
 
               <img src={hero2} className="hero-img" alt="" />
@@ -146,7 +146,7 @@ function Hero() {
 
               </div>
             </div>
-          </div>
+          </div> */}
 
         </div>
 

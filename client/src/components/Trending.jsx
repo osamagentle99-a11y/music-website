@@ -25,50 +25,50 @@ function Trending() {
 
           <div className="card-box">
             <img src={img1} alt="" />
-            <h5>John Doe</h5>
-            <p>@john</p>
+            <h5>Arijit Singh</h5>
+            <p style={{color:"gold"}}>INDIA</p>
           </div>
 
           <div className="card-box">
             <img src={img2} alt="" />
-            <h5>Sarah</h5>
-            <p>@sarah</p>
+            <h5>Ali Zafar</h5>
+            <p style={{color:"gold"}}>PAKISTAN</p>
           </div>
 
           <div className="card-box">
             <img src={img3} alt="" />
-            <h5>Alex</h5>
-            <p>@alex</p>
+            <h5>Jubin</h5>
+            <p style={{color:"gold"}}>INDIA</p>
           </div>
 
           <div className="card-box">
             <img src={img4} alt="" />
-            <h5>Emma</h5>
-            <p>@emma</p>
+            <h5>Zoya</h5>
+            <p style={{color:"gold"}}>PAKISTAN</p>
           </div>
 
           <div className="card-box">
             <img src={img3} alt="" />
-            <h5>John Doe</h5>
-            <p>@john</p>
+            <h5>Justin Berber</h5>
+            <p style={{color:"gold"}}>AMERICA</p>
           </div>
 
           <div className="card-box">
             <img src={img5} alt="" />
-            <h5>Sarah</h5>
-            <p>@sarah</p>
+            <h5>Talha</h5>
+            <p style={{color:"gold"}}>PAKISTAN</p>
           </div>
 
           <div className="card-box">
             <img src={img1} alt="" />
-            <h5>Alex</h5>
-            <p>@alex</p>
+            <h5>Guru Randhawa</h5>
+            <p style={{color:"gold"}}>INDIA</p>
           </div>
 
           <div className="card-box">
             <img src={img2} alt="" />
-            <h5>Emma</h5>
-            <p>@emma</p>
+            <h5>Honey Singh</h5>
+            <p style={{color:"gold"}}>INDIA</p>
           </div>
 
         </div>

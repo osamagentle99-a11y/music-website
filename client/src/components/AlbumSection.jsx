@@ -20,8 +20,8 @@ function AlbumSection() {
             <div className="category-card">
               <img src={img1} alt="Album" />
               <div className="overlay">
-                <h3>ALLURE</h3>
-                <p>UNSTITCHED COLLECTION</p>
+                <h3>ATIF ASLAM</h3>
+                <p>TOP SONGS</p>
               </div>
             </div>
           </div>
@@ -30,8 +30,8 @@ function AlbumSection() {
             <div className="category-card">
               <img src={img2} alt="Album" />
               <div className="overlay">
-                <h3>EMBROIDERED PRET</h3>
-                <p>READY TO WEAR</p>
+                <h3>YOUNG STUNNERS</h3>
+                <p>ENERGY FOR YOUTH</p>
               </div>
             </div>
           </div>
@@ -40,8 +40,8 @@ function AlbumSection() {
             <div className="category-card">
               <img src={img3} alt="Album" />
               <div className="overlay">
-                <h3>PREMIUM</h3>
-                <p>UNSTITCHED COLLECTION</p>
+                <h3>LIVE</h3>
+                <p>LIVE CONCERTS</p>
               </div>
             </div>
           </div>
@@ -50,8 +50,8 @@ function AlbumSection() {
             <div className="category-card">
               <img src={img4} alt="Album" />
               <div className="overlay">
-                <h3>PRINTED PRET</h3>
-                <p>READY TO WEAR</p>
+                <h3>ARIJIT SINGH</h3>
+                <p>YOUR PAIN IS VOICE</p>
               </div>
             </div>
           </div>
