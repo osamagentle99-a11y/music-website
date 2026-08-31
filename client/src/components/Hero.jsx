@@ -59,13 +59,13 @@ function Hero() {
 
                 {/* Heading + Paragraph */}
                 <div className="left-content">
-                  <h1>
+                  <h1 style={{color:"white"}}>
                     IT ALL STARTS WITH
                     <br />
                     AN UPLOAD.
                   </h1>
 
-                  <p>
+                  <p style={{color:"white"}}>
                     SoundCloud is where you define what's next in music.
                     Just hit upload.
                   </p>
